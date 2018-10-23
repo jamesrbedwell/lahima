@@ -1,0 +1,2 @@
+# The Problem
+The current system is very labour intensive, job cards are created on trello, workers are added to these, texts are sent from a type out message on trello. Once jobs are confirmed the data is manually inputted into a local database on a daily basis. Each account/worker manager then needs to validate this data from memory.
