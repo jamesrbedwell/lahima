@@ -15,6 +15,7 @@ get '/' do
 end
 
 get '/dashboard/:id' do
+  @user = User.find(params[:id])
   erb :dashboard
 end
 

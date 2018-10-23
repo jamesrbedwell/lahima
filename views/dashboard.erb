@@ -1,1 +1,36 @@
-Dashboard Page
+<h1>Hello, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<main class="dashboard">
+  <section class="workers">
+    <ul class="">
+      <% @user.workers.each do |worker| %>
+        <li>
+          <p>Name: <%= "#{worker.first_name} #{worker.last_name}" %></p>
+          <p>Worker Type: <%= worker.worker_type %></p>
+          <p>Phone: <%= worker.phone %></p>
+          <p>Location: <%= worker.city %></p>
+          <p>Transport: <%= worker.transport %></p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="clients">
+    <ul class="">
+      <% @user.clients.each do |client| %>
+        <li>
+          <h1>Client: <%= client.entity_name %></h1>
+          <% client.client_contacts.each do |contact|%>
+          <h4>Contacts</h4>
+          <ul>
+            <li>
+              <p><%= "#{contact.first_name} #{contact.last_name}" %></p>
+
+              <p><%= contact.phone %></p>
+            </li>
+          </ul>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</main>
