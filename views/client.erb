@@ -1,1 +1,6 @@
 <h1><%= @client.entity_name %></h1>
+<a href="/clients/<%= @client.id %>/edit">Edit Client Details</a>
+<form action="/clients/<%= @client.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>Delete Client</button>
+</form>

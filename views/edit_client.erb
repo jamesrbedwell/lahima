@@ -1,0 +1,27 @@
+<h1>Edit Client</h1>
+
+<form action="/clients" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="">Entity Name(Company Name)</label>
+  <input type="text" name="entity_name" value="<%= @client.enity_name %>">
+  <label for="">ABN</label>
+  <input type="text" name="abn" value="<%= @client.abn %>">
+  <label for="">Street Address</label>
+  <input type="text" name="address1" value="<%= @client.address1 %>">
+  <label for="">City</label>
+  <input type="text" name="city" value="<%= @client.city %>">
+  <label for="">State</label>
+  <input type="text" name="state" value="<%= @client.state %>">
+  <label for="">Country</label>
+  <input type="text" name="country" value="<%= @client.country %>">
+  <label for="">Post Code</label>
+  <input type="text" name="post_code" value="<%= @client.post_code %>">
+  <label for="">Labour Rate</label>
+  <input type="number" name="labour_rate" value="<%= @client.labour_rate %>">
+  <label for="">Ticketeed Rate</label>
+  <input type="number" name="ticketed_rate" value="<%= @client.ticketed_rate %>">
+  <label for="">Trade Rate</label>
+  <input type="number" name="trade_rate" value="<%= @client.trade_rate %>">
+  <button>Update Client Details</button>
+</form>
+
