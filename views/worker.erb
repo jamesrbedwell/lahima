@@ -1,1 +1,6 @@
 <h1><%= "#{@worker.first_name} #{@worker.last_name}" %></h1>
+<a href="/workers/<%= @worker.id %>/edit">Edit Worker Details</a>
+<form action="/workers/<%= @worker.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>Delete Worker</button>
+</form>

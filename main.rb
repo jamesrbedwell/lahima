@@ -29,7 +29,7 @@ get '/' do
   erb :index, layout: false
 end
 
-# SESSION ROUTES
+# -------- SESSION ROUTES --------
 post '/session' do
   #authenticate
   user = User.find_by(email: params[:email])
@@ -50,14 +50,14 @@ delete '/session' do
   redirect to('/')
 end
 
-# DASHBOARD ROUTES
+# -------- DASHBOARD ROUTES --------
 get '/dashboard' do
   redirect to '/' unless logged_in?
   @user = User.find(current_user.id)
   erb :dashboard
 end
 
-# WORKER ROUTES
+# -------- WORKER ROUTES --------
 get '/workers/new' do
   redirect to '/' unless logged_in?
   erb :new_worker
@@ -75,11 +75,42 @@ post '/workers' do
   worker.city = params[:city]
   worker.state = params[:state]
   worker.country = params[:country]
-  worker.post_code = params[:psot_code]
+  worker.post_code = params[:post_code]
   worker.user_id = current_user.id
   worker.save
 
   redirect to("/workers/#{worker.id}")
+end
+
+get '/workers/:id/edit' do
+  redirect to '/' unless logged_in?
+  @worker = Worker.find(params[:id])
+  erb :edit_worker
+end
+
+put '/workers/:id' do
+  @worker = Worker.find(params[:id])
+  @worker.first_name = params[:first_name]
+  @worker.last_name = params[:last_name]
+  @worker.phone = params[:phone]
+  @worker.email = params[:email]
+  @worker.worker_type = params[:worker_type]
+  @worker.pay_rate = params[:pay_rate]
+  @worker.address1 = params[:address1]
+  @worker.city = params[:city]
+  @worker.state = params[:state]
+  @worker.country = params[:country]
+  @worker.post_code = params[:post_code]
+  @worker.user_id = current_user.id
+  @worker.save
+
+  redirect to("/workers/#{params[:id]}")
+end
+
+delete '/workers/:id' do
+  @worker = Worker.find(params[:id])
+  @worker.destroy #would make sense to change a status to inactive as will need to keep details on record.
+  redirect to('/dashboard')
 end
 
 get '/workers/:id' do
@@ -88,7 +119,7 @@ get '/workers/:id' do
   erb :worker
 end
 
-# CLIENT ROUTES
+# -------- CLIENT ROUTES --------
 get '/clients/:id' do
   redirect to '/' unless logged_in?
   @client = Client.find(params[:id])
@@ -96,7 +127,7 @@ get '/clients/:id' do
 end
 
 
-#CLIENT CONTACT ROUTES
+# -------- CLIENT CONTACT ROUTES --------
 get '/client_contacts/:id' do
   redirect to '/' unless logged_in?
   @client_contact = ClientContact.find(params[:id])

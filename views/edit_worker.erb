@@ -1,0 +1,27 @@
+<h1>Add a Worker</h1>
+<form action="/workers/<%=@worker.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="">First Name</label>
+  <input type="text" name="first_name" value="<%= @worker.first_name %>">
+  <label for="">Last Name</label>
+  <input type="text" name="last_name" value="<%= @worker.last_name %>">
+  <label for="">Phone Number</label>
+  <input type="text" name="phone" value="<%= @worker.phone %>">
+  <label for="">Email</label>
+  <input type="text" name="email" value="<%= @worker.email %>">
+  <label for="">Worker Type</label>
+  <input type="text" name="worker_type" value="<%= @worker.worker_type %>">
+  <label for="">Pay Rate</label>
+  <input type="number" name="pay_rate" value="<%= @worker.pay_rate %>">
+  <label for="">Street Address</label>
+  <input type="text" name="address1" value="<%= @worker.address1 %>">
+  <label for="">City</label>
+  <input type="text" name="city" value="<%= @worker.city %>">
+  <label for="">State</label>
+  <input type="text" name="state" value="<%= @worker.state %>">
+  <label for="">Country</label>
+  <input type="text" name="country" value="<%= @worker.country %>">
+  <label for="">Post Code</label>
+  <input type="text" name="post_code" value="<%= @worker.post_code %>">
+  <button>Update Worker</button>
+</form>
