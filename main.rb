@@ -57,6 +57,29 @@ get '/dashboard' do
   erb :dashboard
 end
 
+# WORKER ROUTES
+get '/worker/:id' do
+  redirect to '/' unless logged_in?
+  @worker = Worker.find(params[:id])
+  erb :worker
+end
+
+# CLIENT ROUTES
+get '/client/:id' do
+  redirect to '/' unless logged_in?
+  @client = Client.find(params[:id])
+  erb :client
+end
+
+
+#CLIENT CONTACT ROUTES
+get '/client_contact/:id' do
+  redirect to '/' unless logged_in?
+  @client_contact = ClientContact.find(params[:id])
+  erb :client_contact
+end
+
+
 
 
 

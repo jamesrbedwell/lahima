@@ -1,7 +1,13 @@
 .dashboard {
   display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
 }
 
 .dashboard section {
-  margin-right: 30px;
+  width: 50%;
+  height: 400px;
+  overflow-y: scroll;
+  border: 2px solid black;
 }
