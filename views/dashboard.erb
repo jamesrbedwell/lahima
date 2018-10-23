@@ -4,7 +4,7 @@
     <ul class="">
       
       <% @user.workers.each do |worker| %>
-        <a href="/worker/<%= worker.id %>" class="href">
+        <a href="/workers/<%= worker.id %>" class="href">
           <li>
             <p>Name: <%= "#{worker.first_name} #{worker.last_name}" %></p>
             <p>Worker Type: <%= worker.worker_type %></p>
@@ -21,14 +21,14 @@
     <ul class="">
       <% @user.clients.each do |client| %>
         <li>
-          <a href="/client/<%= client.id %>" class="href">
+          <a href="/clients/<%= client.id %>" class="href">
             <h1>Client: <%= client.entity_name %></h1>
           </a>
           <% client.client_contacts.each do |contact|%>
           <h4>Contacts</h4>
           <ul>
             <li>
-              <a href="/client_contact/<%= contact.id %>" class="href">
+              <a href="/client_contacts/<%= contact.id %>" class="href">
                 <p><%= "#{contact.first_name} #{contact.last_name}" %></p>
                 <p><%= contact.phone %></p>
               </a>

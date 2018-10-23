@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <form action="/session" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>Logout</button>
-  </form>
+  <nav>
+    <a href="/dashboard" class="">Dashboard</a>
+    <a href="/workers/new" class="">New Worker</a>
+    <form action="/session" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Logout</button>
+    </form>
+  </nav>
   <%= yield %>
   <script src="/js/app.js"></script>
 </body>
