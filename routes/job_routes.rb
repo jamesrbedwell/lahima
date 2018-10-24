@@ -5,17 +5,9 @@ end
 
 post '/jobs' do
   job = Job.new
-  job_client_id = params[:client_id]
-  job.project_id = params[:project_id]
-  job.client_contact_id = params[:client_id]
-  job.worker_type = params[:worker_type]
-  job.start_date = params[:start_date]
-  job.start_time = params[:start_time]
-  job.status = params[:status]
-  job.user_id = current_user
   job.save
 
-  redirect to("/jobs/#{job.id}")
+  redirect to("/jobs/#{job.id}/#{params[:client_id]}")
 end
 
 get '/jobs/:id/edit' do
@@ -24,16 +16,67 @@ get '/jobs/:id/edit' do
   erb :'jobs/edit_job'
 end
 
-put '/jobs/:id' do
+put '/jobs/:id/update' do
   job = Job.find(params[:id])
-  job_client_id = params[:client_id]
   job.project_id = params[:project_id]
-  job.client_contact_id = params[:client_id]
   job.worker_type = params[:worker_type]
   job.start_date = params[:start_date]
   job.start_time = params[:start_time]
   job.status = params[:status]
-  job.user_id = current_user
+  
+  job.save
+  
+  redirect to("/jobs/#{job.id}")
+end
+
+put '/jobs/:id/add_worker' do
+  worker = Worker.find(params[:worker_id])
+  worker.available = false
+  worker.save
+  job = Job.find(params[:id])
+  job.worker_id = worker.id
+  job.status = 'filled'
+  job.save
+
+  redirect to("/dashboard")
+end
+
+put '/jobs/:id/working' do
+  job = Job.find(params[:id])
+  job.status = 'working'
+  job.save
+
+  redirect to("/dashboard")
+end
+
+put '/jobs/:id/finished' do
+  job = Job.find(params[:id])
+  job.status = 'finished'
+  job.save
+
+  worker = Worker.find(job.worker_id)
+  worker.available = true
+  worker.save
+
+  redirect to("/dashboard")
+end
+
+get '/jobs/:id/:client_id' do
+  @job = Job.find(params[:id])
+  @client = Client.find(params[:client_id])
+
+  erb :'jobs/job_details'
+end
+
+
+put '/jobs/:id' do
+  job = Job.find(params[:id])
+  job.worker_type = params[:worker_type]
+  job.start_date = params[:start_date]
+  job.start_time = params[:start_time]
+  job.worker_id = params[:worker_id]
+  job.status = params[:status]
+
   job.save
 
   redirect to("/jobs/#{job.id}")
@@ -50,3 +93,4 @@ get '/jobs/:id' do
   @job = Job.find(params[:id])
   erb :'jobs/job'
 end
+

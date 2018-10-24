@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Lahima | Labour Hire Management Software</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body class="index">
   <main class="login">
-    <form action="/session" method="post">
-      <label for="">Email Address</label>
-      <input type="text" name="email">
-      <label for="">Password</label>
-      <input type="password" name="password">
-    <button>Login</button>
+    <h1 class="logo index-logo">LAHIMA</h1>
+    <form action="/session" method="post" class="login-form">  
+      <label for="">Email:</label>
+      <input type="text" name="email" placeholder="Your Login Email" class="email-input">
+      <label for="">Password:</label>
+      <input type="password" name="password" placeholder="Password" class="password-input">
+      <button class="login-btn">Login</button>
     </form>
   </main>
 </body>

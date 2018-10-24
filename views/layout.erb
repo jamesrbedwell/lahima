@@ -5,22 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Lahima - Labour Hire Management Software</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <nav>
-    <a href="/dashboard" class="">Dashboard</a>
-    <a href="/workers/new" class="">New Worker</a>
-    <a href="/clients/new" class="">New Client</a>
-    <a href="/client_contacts/new" class="">New Client Contact</a>
-    <a href="/projects/new" class="">New Project</a>
-    <a href="/projects/job" class="">New Job</a>
+  <nav class="dash-top-nav">
+    <h1 class="logo">LAHIMA</h1>
     <form action="/session" method="post">
       <input type="hidden" name="_method" value="delete">
-      <button>Logout</button>
+      <button class="logout-btn">Logout</button>
     </form>
+    <div class="user">
+      <h3><%= "#{current_user.first_name[0]}#{current_user.last_name[0]}" %></h3>
+    </div>
   </nav>
-  <%= yield %>
+  <main class="dash-main">
+    <nav class="dash-side-nav">
+      <a href="/dashboard" class="">
+        DASH
+        <%# <img src="/images/icons/home.png" alt=""> %>
+      </a>
+      <a href="/workers/new" class="">
+        NEW WORKER
+        <%# <img src="/images/icons/add-user.png" alt=""> %>
+      </a>
+      <a href="/clients/new" class="">
+        NEW CLIENT
+        <%# <img src="/images/icons/clients.png" alt=""> %>
+      </a>
+      <a href="/projects/new" class="">
+        NEW PROJECT
+        <%# <img src="/images/icons/project.png" alt=""> %>
+      </a>
+      <a href="/jobs/new" class="">
+        NEW JOB
+        <%# <img src="/images/icons/add-job.png" alt=""> %>
+      </a>
+    </nav>
+    <section class="dash-content">
+      <%= yield %>
+    </section>
+  </main>
+  
   <script src="/js/app.js"></script>
 </body>
 </html>

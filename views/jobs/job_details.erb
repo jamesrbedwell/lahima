@@ -1,0 +1,27 @@
+<h4>Client Name: <%= @client.name %></h4>
+
+<form action="/jobs/<%=@job.id%>/update" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="">Project Name</label>
+  <select name="project_id">
+    <% @client.projects.each do |project| %>
+        <option value="<%= project.id %>"><%= project.name %></option>
+    <% end %>
+  </select>
+  <label for="">Worker Type</label>
+  <input type="text" name="worker_type">
+  <label for="">Start Date</label>
+  <input type="date" name="start_date">
+  <label for="">Start Time</label>
+  <input type="time" name="start_time">
+  <label for="">Status</label>
+  <select name="status">
+    <option value="unfilled" selected>Unfilled</option>
+    <option value="filled">Filled</option>
+    <option value="working">Working</option>
+    <option value="finished">Finished</option>
+  </select> 
+  
+  <button>Update Job</button>
+</form>
+

@@ -1,0 +1,31 @@
+<h4>Client Name: <%= @job.project ? @job.project.client.name : '' %></h4>
+<h4>Project Name: <%= @job.project.name %></h4>
+<form action="/jobs/<%=@job.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="">Worker Type</label>
+  <input type="text" name="worker_type" value="<%= @job.worker_type ? @job.worker_type : '' %>">
+  <label for="">Start Date</label>
+  <input type="date" name="start_date" value="<%= @job.start_date ? @job.start_date : '' %>">
+  <label for="">Start Time</label>
+  <input type="time" name="start_time" value="<%= @job.start_time ? @job.start_time : '' %>">
+  <label for="">Status</label>
+  <select name="status">
+    <option value="unfilled" selected>Unfilled</option>
+    <option value="filled">Filled</option>
+    <option value="working">Working</option>
+    <option value="finished">Finished</option>
+  </select> 
+  <label for="">Worker</label>
+  <select name="worker_id">
+    <% current_user.workers.each do |worker| %>
+      <% if worker.id == @job.worker_id %>
+        <option value="<%= worker.id %>" selected><%= worker.full_name %></option>
+      <% else %>
+        <option value="<%= worker.id %>"><%= worker.full_name %></option>
+      <% end %>
+    <% end %>
+  </select>
+  
+  <button>Update Job</button>
+</form>
+

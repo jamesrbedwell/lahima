@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   has_many :client_contacts, through: :projects
   has_many :worker_jobs, through: :workers
   has_many :client_jobs, through: :projects
+
 end

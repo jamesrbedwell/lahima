@@ -1,12 +1,93 @@
-<h1>Hello, <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+
 <main class="dashboard">
+  <section class="stats">
+    <div class="stat working">
+      <h2><%= Job.working.count %></h2>
+      <h4>working</h4>
+    </div>
+    <div class="stat unfilled">
+    <h2><%= Job.unfilled.count %></h2>
+      <h4>unfilled jobs</h4>
+    </div>
+    <div class="stat available">
+      <h2><%= Worker.available.count %></h2>
+      <h4>available workers</h4>
+    </div>
+  </section>
+
+  <section class="unfilled-job-section">
+  <h1>UNFILLED JOBS</h1>
+  <% if @unfilled %>
+    <ul>
+      <% @unfilled.each do | job |%>
+      <li class="unfilled-job">
+        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.start_time.strftime("%H:%M")}" %></p>
+        <form action="/jobs/<%= job.id %>/add_worker" method="post">
+        <input type="hidden" name="_method" value="put">
+          <select name="worker_id">
+          <% @available_workers.each do |worker| %>
+            <option value="<%= worker.id %>"><%= worker.full_name %></option>
+            <% end %>
+          </select>
+          <button>Assign Worker</button>
+        </form>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+  </section>
+
+
+  <section class="filled-job-section">
+  <h1>FILLED JOBS</h1>
+  <% if @filled %>
+    <ul>
+      <% @filled.each do | job |%>
+      <li class="filled-job">
+        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.start_time.strftime("%H:%M")}" %></p>
+        <div>
+          <form action="/jobs/<%= job.id %>/working" method="post">
+            <input type="hidden" name="_method" value="put">          
+            <button>Working</button>
+          </form>
+          <form action="/jobs/<%= job.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">          
+            <button>Cancelled</button>
+          </form>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+<section class="working-job-section">
+  <h1>WORKING JOBS</h1>
+  <% if @working_jobs %>
+    <ul>
+      <% @working_jobs.each do | job |%>
+      <li class="working-job">
+        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.worker.full_name}" %></p>
+        <form action="/jobs/<%= job.id %>/finished" method="post">
+          <input type="hidden" name="_method" value="put">          
+          <button>Finished</button>
+        </form>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+
+
+
   <section class="workers">
     <ul class="">
       
       <% @user.workers.each do |worker| %>
         <a href="/workers/<%= worker.id %>">
           <li>
-            <p>Name: <%= "#{worker.first_name} #{worker.last_name}" %></p>
+            <p>Name: <%= worker.full_name %></p>
             <p>Worker Type: <%= worker.worker_type %></p>
             <p>Phone: <%= worker.phone %></p>
             <p>Location: <%= worker.city %></p>
@@ -48,3 +129,21 @@
     </ul>
   </section>
 </main>
+
+
+<section class="working-jobs">
+  <h1>Working Jobs</h1>
+  <% if @working_jobs %>
+    <ul>
+      <% @working_jobs.each do | job |%>
+      <li>
+        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.worker.full_name}" %></p>
+        <form action="/jobs/<%= job.id %>/finished" method="post">
+          <input type="hidden" name="_method" value="put">          
+          <button>Finished</button>
+        </form>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
