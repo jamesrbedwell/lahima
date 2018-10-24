@@ -1,0 +1,29 @@
+<h1>Edit Project</h1>
+<h4><%= @project.client.name %></h4>
+<form action="/projects/<%=@project.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="">Project Name</label>
+  <input type="text" name="name" value="<%= @project.name %>">
+  <label for="">Street Address</label>
+  <input type="text" name="address1" value="<%= @project.address1 %>">
+  <label for="">City</label>
+  <input type="text" name="city" value="<%= @project.city %>">
+  <label for="">State</label>
+  <input type="text" name="state" value="<%= @project.state %>">
+  <label for="">Country</label>
+  <input type="text" name="country" value="<%= @project.country %>">
+  <label for="">Post Code</label>
+  <input type="text" name="post_code" value="<%= @project.post_code %>">
+  <label for="">Client Contact Name</label>
+  <select name="client_contact_id">
+    <% @project.client.client_contacts.each do |contact| %>
+      <% if contact.id == @project.client_id %>
+      <option value="<%= contact.id %>" selected><%= "#{contact.first_name} #{contact.last_name}" %></option>
+      <% else %>
+      <option value="<%= contact.id %>"><%= "#{contact.first_name} #{contact.last_name}" %>
+      <% end %>
+    <% end %>
+  </select>  
+  
+  <button>Update Project</button>
+</form>

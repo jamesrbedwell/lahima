@@ -44,15 +44,6 @@ CREATE TABLE clients (
   user_id INTEGER
 );
 
-CREATE TABLE client_contacts (
-  id SERIAL PRIMARY KEY,
-  first_name VARCHAR(200),
-  last_name VARCHAR(200),
-  phone VARCHAR(200),
-  email VARCHAR(400),
-  client_id INTEGER
-);
-
 CREATE TABLE projects (
   id SERIAL PRIMARY KEY,
   project_name VARCHAR(200),
@@ -61,17 +52,29 @@ CREATE TABLE projects (
   state VARCHAR(100),
   country VARCHAR(200),
   post_code VARCHAR(20),
-  client_contact_id INTEGER
+  client_id INTEGER
 );
+
+CREATE TABLE client_contacts (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(200),
+  last_name VARCHAR(200),
+  phone VARCHAR(200),
+  email VARCHAR(400),
+  project_id INTEGER
+);
+
 
 CREATE TABLE jobs (
   id SERIAL PRIMARY KEY,
-  worker_type VARCHAR(200),
-  user_id INTEGER,
+  client_id INTEGER,
+  project_id INTEGER,
   client_contact_id INTEGER,
+  worker_type VARCHAR(200),
   start_date TIMESTAMP,
   start_time TIMESTAMP,
-  status VARCHAR(100)
+  status VARCHAR(100),
+  user_id INTEGER
 );
 
 

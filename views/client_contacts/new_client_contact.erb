@@ -9,8 +9,11 @@
   <label for="">Email</label>
   <input type="text" name="email">
   <label for="">Client Name</label>
-  CREATE A DROP DOWN MENU OF CLIENT NAMES
-  <input type="text" name="client_id">
+  <select name="client_id">
+    <% current_user.clients.each do |client| %>
+      <option value="<%= client.id %>"><%= client.name %></option>
+    <% end %>
+  </select>  
   
   <button>Add Client Contact</button>
 </form>

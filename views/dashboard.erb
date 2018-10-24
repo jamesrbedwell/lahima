@@ -4,7 +4,7 @@
     <ul class="">
       
       <% @user.workers.each do |worker| %>
-        <a href="/workers/<%= worker.id %>" class="href">
+        <a href="/workers/<%= worker.id %>">
           <li>
             <p>Name: <%= "#{worker.first_name} #{worker.last_name}" %></p>
             <p>Worker Type: <%= worker.worker_type %></p>
@@ -21,19 +21,27 @@
     <ul class="">
       <% @user.clients.each do |client| %>
         <li>
-          <a href="/clients/<%= client.id %>" class="href">
-            <h1>Client: <%= client.entity_name %></h1>
+          <a href="/clients/<%= client.id %>">
+            <h1>Client: <%= client.name %></h1>
           </a>
-          <% client.client_contacts.each do |contact|%>
-          <h4>Contacts</h4>
-          <ul>
-            <li>
-              <a href="/client_contacts/<%= contact.id %>" class="href">
-                <p><%= "#{contact.first_name} #{contact.last_name}" %></p>
-                <p><%= contact.phone %></p>
-              </a>
-            </li>
-          </ul>
+          <h3>Projects</h3>
+          <% client.projects.each do |project| %>
+            <ul>
+              <li>
+                <a href="/projects/<%= project.id %>">
+                  <h4><%= project.name %></h4>
+                </a>
+                <h5>Contacts</h5>
+                <ul>
+                  <li>
+                    <a href="/client_contacts/<%= project.client_contact.id %>">
+                      <p><%= "#{project.client_contact.first_name} #{project.client_contact.last_name}" %></p>
+                      <p><%= project.client_contact.phone %></p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           <% end %>
         </li>
       <% end %>

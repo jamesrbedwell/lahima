@@ -5,5 +5,6 @@ require_relative 'models/client' #(singular)
 require_relative 'models/client_contact' #(singular)
 require_relative 'models/worker' #(singular)
 require_relative 'models/job' #(singular)
+require_relative 'models/project' #(singular)
 
 binding.pry

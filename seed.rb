@@ -26,7 +26,7 @@ end
 
 10.times do
   Client.create({
-    :entity_name => Faker::Company.name,
+    :name => Faker::Company.name,
     :abn => Faker::Company.australian_business_number,
     :address1 => Faker::Address.street_address,
     :city => Faker::Address.city,
@@ -52,12 +52,12 @@ end
 
 30.times do
   Project.create({
-    :project_name => Faker::Address.community,
+    :name => Faker::Address.community,
     :address1 => Faker::Address.street_address,
     :city => Faker::Address.city,
     :state => Faker::Address.state, 
     :country => Faker::Address.country,
     :post_code => Faker::Address.postcode,
-    :client_contact_id => rand(1..20)
+    :client_id => rand(1..10)
   })
 end

@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   # User.authenticate
   has_many :workers
   has_many :clients
+  has_many :projects, through: :clients
+  has_many :client_contacts, through: :projects
+  has_many :worker_jobs, through: :workers
+  has_many :client_jobs, through: :projects
 end
