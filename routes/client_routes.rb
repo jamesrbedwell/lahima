@@ -18,6 +18,14 @@ post '/clients' do
   client.user_id = current_user.id
   client.save
 
+  client_contact = ClientContact.new
+  client_contact.first_name = params[:contact_first_name]
+  client_contact.last_name = params[:contact_last_name]
+  client_contact.phone = params[:contact_phone]
+  client_contact.email = params[:contact_email]
+  client_contact.client_id = client.id
+  client_contact.save
+  
   redirect to("/clients/#{client.id}")
 end
 

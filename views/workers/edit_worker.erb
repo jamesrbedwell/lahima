@@ -1,27 +1,56 @@
-<h1>Add a Worker</h1>
+<div class="edit-worker-details">
+<h1>Edit <%= @worker.full_name %>'s Details</h1>
 <form action="/workers/<%=@worker.id%>" method="post">
   <input type="hidden" name="_method" value="put">
-  <label for="">First Name</label>
-  <input type="text" name="first_name" value="<%= @worker.first_name %>">
-  <label for="">Last Name</label>
-  <input type="text" name="last_name" value="<%= @worker.last_name %>">
-  <label for="">Phone Number</label>
-  <input type="text" name="phone" value="<%= @worker.phone %>">
-  <label for="">Email</label>
-  <input type="text" name="email" value="<%= @worker.email %>">
+  <div>
+    <label for="">First Name</label>
+    <input type="text" name="first_name" value="<%= @worker.first_name %>">
+    <label for="">Last Name</label>
+    <input type="text" name="last_name" value="<%= @worker.last_name %>">
+  </div>
+  <div class="edit-worker-contact">
+    <label for="">Phone Number</label>
+    <input type="text" name="phone" value="<%= @worker.phone %>">
+    <label for="">Email</label>
+    <input type="text" name="email" value="<%= @worker.email %>">
+    <label for="">Pay Rate</label>
+    <input type="number" name="pay_rate" value="<%= @worker.pay_rate %>">
+    <label for="">Street Address</label>
+    <input type="text" name="address1" value="<%= @worker.address1 %>">
+    <label for="">City</label>
+    <input type="text" name="city" value="<%= @worker.city %>">
+    <label for="">State</label>
+    <input type="text" name="state" value="<%= @worker.state %>">
+    <label for="">Country</label>
+    <input type="text" name="country" value="<%= @worker.country %>">
+    <label for="">Post Code</label>
+    <input type="text" name="post_code" value="<%= @worker.post_code %>">
+  </div>
   <label for="">Worker Type</label>
-  <input type="text" name="worker_type" value="<%= @worker.worker_type %>">
-  <label for="">Pay Rate</label>
-  <input type="number" name="pay_rate" value="<%= @worker.pay_rate %>">
-  <label for="">Street Address</label>
-  <input type="text" name="address1" value="<%= @worker.address1 %>">
-  <label for="">City</label>
-  <input type="text" name="city" value="<%= @worker.city %>">
-  <label for="">State</label>
-  <input type="text" name="state" value="<%= @worker.state %>">
-  <label for="">Country</label>
-  <input type="text" name="country" value="<%= @worker.country %>">
-  <label for="">Post Code</label>
-  <input type="text" name="post_code" value="<%= @worker.post_code %>">
+  <select name="worker_type">
+    <% @worker_types.each do |type| %>
+      <% if type == @worker.worker_type %>
+        <option value="<%= type %>" selected><%= type %></option>
+      <% else %>
+        <option value="<%= type %>"><%= type %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <label for="">Transport</label>
+  <select name="transport">
+    <% @transport_types.each do |type| %>
+      <% if type == @worker.transport %>
+        <option value="<%= type %>" selected><%= type %></option>
+      <% else %>
+        <option value="<%= type %>"><%= type %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <label for="">Available?</label>
+  <select name="available">
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select>
   <button>Update Worker</button>
+</div>
 </form>

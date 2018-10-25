@@ -1,10 +1,10 @@
 <h1>Add a Job</h1>
-<form action="/jobs" method="post">
+<form action="/jobs/client">
   <label for="">Client Name</label>
   <select name="client_id">
     <% current_user.clients.each do |client| %>
       <option value="<%= client.id %>"><%= client.name %></option>
     <% end %>
   </select>  
-  <button>Create Job</button>
+  <button>Select Client</button>
 </form>

@@ -1,0 +1,70 @@
+<div class="all-workers-list">
+  <section class="list-workers">
+    <h1 class="list-heading">Available Workers</h1>
+    <% @available.each do |worker|%>
+      <a href="/workers/<%= worker.id %>">
+        <div class="worker-list-item">
+          <h3><%= worker.full_name %></h3>
+          <h4><%= worker.worker_type %></h4>
+          <h3><%= worker.phone %></h3>
+        </div>
+      </a>
+    <% end%>
+  </section>
+
+
+  <section class="list-workers">
+    <h1 class="list-heading">Unvailable Workers</h1>
+    <% @unavailable.each do |worker|%>
+      <a href="/workers/<%= worker.id %>">
+        <div class="worker-list-item">
+          <h3><%= worker.full_name %></h3>
+          <h4><%= worker.worker_type %></h4>
+          <h3><%= worker.phone %></h3>
+        </div>
+      </a>
+    <% end%>
+  </section>
+</div>
+
+<div class="worker-types-list">
+  <section class="list-workers">
+    <h1 class="list-heading">Available Labourers</h1>
+    <% @avail_labourers.each do |worker|%>
+      <a href="/workers/<%= worker.id %>">
+        <div class="worker-list-item">
+          <h3><%= worker.full_name %></h3>
+          <h4><%= worker.worker_type %></h4>
+          <h3><%= worker.phone %></h3>
+        </div>
+      </a>
+    <% end%>
+  </section>
+
+  <section class="list-workers">
+    <h1 class="list-heading">Available Ticketed</h1>
+    <% @avail_ticketed.each do |worker|%>
+      <a href="/workers/<%= worker.id %>">
+        <div class="worker-list-item">
+          <h3><%= worker.full_name %></h3>
+          <h4><%= worker.worker_type %></h4>
+          <h3><%= worker.phone %></h3>
+        </div>
+      </a>
+    <% end%>
+  </section>
+
+  <section class="list-workers">
+    <h1 class="list-heading">Available Carpenters</h1>
+    <% @avail_carpenters.each do |worker|%>
+      <a href="/workers/<%= worker.id %>">
+        <div class="worker-list-item">
+          <h3><%= worker.full_name %></h3>
+          <h4><%= worker.worker_type %></h4>
+          <h3><%= worker.phone %></h3>
+        </div>
+      </a>
+    <% end%>
+  </section>
+</div>
+

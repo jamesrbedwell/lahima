@@ -8,40 +8,49 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
-  <nav class="dash-top-nav">
+<body class="layout-body">
+  <nav class="dash-side-nav">
     <h1 class="logo">LAHIMA</h1>
-    <form action="/session" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <button class="logout-btn">Logout</button>
-    </form>
-    <div class="user">
-      <h3><%= "#{current_user.first_name[0]}#{current_user.last_name[0]}" %></h3>
-    </div>
-  </nav>
-  <main class="dash-main">
-    <nav class="dash-side-nav">
       <a href="/dashboard" class="">
         DASH
         <%# <img src="/images/icons/home.png" alt=""> %>
       </a>
-      <a href="/workers/new" class="">
+      <p class="nav-worker-section">WORKERS</p>
+      <a href="/workers/list">LIST WORKERS</a>
+      <a href="/register" class="">
         NEW WORKER
         <%# <img src="/images/icons/add-user.png" alt=""> %>
       </a>
+      <p class="nav-client-section">CLIENTS</p>
+      <a href="/clients/list" class="">LIST CLIENTS</a>
       <a href="/clients/new" class="">
         NEW CLIENT
         <%# <img src="/images/icons/clients.png" alt=""> %>
       </a>
+      <p class="nav-project-section">PROJECTS</p>
+      <a href="/projects/list" class="">LIST PROJECTS</a>
       <a href="/projects/new" class="">
         NEW PROJECT
         <%# <img src="/images/icons/project.png" alt=""> %>
       </a>
+      <p class="nav-jobs-section">JOBS</p>
+      <a href="/jobs/list" class="">LIST JOBS</a>
       <a href="/jobs/new" class="">
         NEW JOB
         <%# <img src="/images/icons/add-job.png" alt=""> %>
       </a>
     </nav>
+  <main class="dash-main">
+    <nav class="dash-top-nav">
+      <form action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button class="logout-btn">Logout</button>
+      </form>
+      <div class="user">
+        <h3><%= "#{current_user.first_name[0]}#{current_user.last_name[0]}" %></h3>
+      </div>
+    </nav>
+
     <section class="dash-content">
       <%= yield %>
     </section>

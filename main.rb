@@ -40,7 +40,7 @@ require_relative 'routes/session_routes'
 require_relative 'routes/worker_routes'
 require_relative 'routes/dashboard_routes'
 
-
+@worker_types = ['Labourer', 'Ticketed', 'Carpenter']
 
 
 

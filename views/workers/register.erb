@@ -1,0 +1,40 @@
+
+  <main>
+    <h1>Welcome to Lahima</h1>
+    <h3>Please register for work by completing your details below</h3>
+    <form action="/workers/register" method="post">
+    <label for="">Name</label>
+      <div class="name">
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+      </div>
+      <div class="contact-details">
+        <label for="">Contact Details</label>
+        <input type="text" name="phone" placeholder="Phone Number" size="40">
+        <input type="text" name="email" placeholder="Email Address" size="40">
+        <input type="text" name="address1" placeholder="Street Address" size="40">
+        <input type="text" name="city" placeholder="City" size="40">
+        <input type="text" name="state" placeholder="State" size="40">
+        <input type="text" name="post_code" placeholder="Post Code" size="40">
+        <input type="text" name="country" placeholder="Country" size="40">
+        <label for="">Mode of Transport</label>
+        <select name="transport" id="">
+          <% @transport_types.each do |type| %>
+            <option value="<%= type %>"><%= type %></option>
+          <% end %>
+        </select>
+        <label for="">Worker Type</label>
+        <select name="worker_type">
+          <% @worker_types.each do |type| %>
+            <option value="<%= type %>"><%= type %></option>
+          <% end %>
+        </select>
+        <label for="">Are you available immediately?</label>
+        <select name="available">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <button>Submit</button>
+      </div>
+    </form>
+  </main>
