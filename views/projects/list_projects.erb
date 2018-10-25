@@ -4,7 +4,9 @@
     <div class="project-details box">
       <h1><%= project.name %></h1>
       <h2>by <%= project.client.name %></h2>
-      <h3><%= "Site Contact: #{project.client_contact.full_name} - #{project.client_contact.phone}" %></h3>
+      <% if project.client_contact %>
+        <h3><%= "Site Contact: #{project.client_contact.full_name} - #{project.client_contact.phone}" %></h3>
+      <% end %>
     </div>
     <div class="project-jobs">
       <h2 class="section-title">JOBS ON PROJECT</h2>
