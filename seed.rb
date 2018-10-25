@@ -7,7 +7,7 @@ require_relative 'models/worker' #(singular)
 require_relative 'models/job' #(singular)
 require_relative 'models/project' #(singular)
 
-30.times do
+10.times do
   Worker.create({
     :first_name => Faker::Name.first_name,
     :last_name => Faker::Name.last_name,
@@ -20,6 +20,46 @@ require_relative 'models/project' #(singular)
     :state => Faker::Address.state, 
     :country => Faker::Address.country,
     :post_code => Faker::Address.postcode,
+    :transport => 'Public Transport',
+    :available => true
+    :user_id => 1
+  })
+end
+
+5.times do
+  Worker.create({
+    :first_name => Faker::Name.first_name,
+    :last_name => Faker::Name.last_name,
+    :phone => Faker::PhoneNumber.cell_phone,
+    :email => Faker::Internet.email,
+    :worker_type => 'Ticketed',
+    :pay_rate => 30.00,
+    :address1 => Faker::Address.street_address,
+    :city => Faker::Address.city,
+    :state => Faker::Address.state, 
+    :country => Faker::Address.country,
+    :post_code => Faker::Address.postcode,
+    :transport => 'Car',
+    :available => true,
+    :user_id => 1
+  })
+end
+
+5.times do
+  Worker.create({
+    :first_name => Faker::Name.first_name,
+    :last_name => Faker::Name.last_name,
+    :phone => Faker::PhoneNumber.cell_phone,
+    :email => Faker::Internet.email,
+    :worker_type => 'Carpenter',
+    :pay_rate => 40.00,
+    :address1 => Faker::Address.street_address,
+    :city => Faker::Address.city,
+    :state => Faker::Address.state, 
+    :country => Faker::Address.country,
+    :post_code => Faker::Address.postcode,
+    :transport => 'Car',
+    :available => true,
     :user_id => 1
   })
 end
@@ -50,7 +90,7 @@ end
   })
 end
 
-30.times do
+20.times do
   Project.create({
     :name => Faker::Address.community,
     :address1 => Faker::Address.street_address,
