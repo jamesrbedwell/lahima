@@ -1,23 +1,27 @@
-<h1>Add a Project</h1>
-<form action="/projects" method="post">
-  <label for="">Project Name</label>
-  <input type="text" name="name">
-  <label for="">Street Address</label>
-  <input type="text" name="address1">
-  <label for="">City</label>
-  <input type="text" name="city">
-  <label for="">State</label>
-  <input type="text" name="state">
-  <label for="">Country</label>
-  <input type="text" name="country">
-  <label for="">Post Code</label>
-  <input type="text" name="post_code">
-  <label for="">Client Name</label>
-  <%# CREATE A DROP DOWN MENU OF CLIENT NAMES %>
-  <select name="client_id">
-    <% current_user.clients.each do |client| %>
-      <option value="<%= client.id %>"><%= client.name %></option>
-    <% end %>
-  </select>  
-  <button>Add Project</button>
-</form>
+<h1 class="section-title">Add a Project</h1>
+<div class="new-project-container box">
+  <form action="/projects" method="post">
+    <div class="new-project-form">
+      <label for="">Project Name</label>
+      <input type="text" name="name">
+      <label for="">Street Address</label>
+      <input type="text" name="address1">
+      <label for="">City</label>
+      <input type="text" name="city">
+      <label for="">State</label>
+      <input type="text" name="state">
+      <label for="">Country</label>
+      <input type="text" name="country">
+      <label for="">Post Code</label>
+      <input type="text" name="post_code">
+      <label for="">Client Name</label>
+      <%# CREATE A DROP DOWN MENU OF CLIENT NAMES %>
+      <select name="client_id">
+        <% current_user.clients.each do |client| %>
+          <option value="<%= client.id %>"><%= client.name %></option>
+        <% end %>
+      </select>  
+    </div>
+    <button>Add Project</button>
+  </form>
+</div>

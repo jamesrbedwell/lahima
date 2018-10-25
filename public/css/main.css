@@ -22,6 +22,12 @@ ul {
   min-height: 100vh;
 }
 
+.box {
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
+  margin-bottom: 20px;
+}
+
 .logo {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
@@ -129,6 +135,10 @@ ul {
   background: transparent;
   border: none;
   box-shadow: none;
+}
+
+.logout-btn:hover {
+  background: transparent;
 }
 
 .logout-btn img {
@@ -537,6 +547,30 @@ button:hover {
   margin-bottom: 0;
 }
 
+.new-client-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.new-client-container form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.new-client-container form button {
+  width: 100%;
+}
+
+.new-client-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+
 .proj-name {
   width: 80%;
   margin: 0 auto;
@@ -562,4 +596,109 @@ button:hover {
   background-color: rgb(248, 248, 248);
   box-shadow: 0 3px 6px rgb(161, 161, 161);
   margin-bottom: 20px;
+}
+
+.project-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 40px; 
+}
+
+.project-details {
+  margin-bottom: 10px;
+}
+
+.project-details h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(69, 69, 69);
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  margin: 10px 0 0 0;
+  text-transform: uppercase;
+}
+
+.project-details h2 {
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.project-details h3 {
+  text-align: center;
+  color: rgb(128, 127, 127);
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+.project-jobs h2 {
+  font-size: 0.8rem;
+  margin-top: 0;
+}
+
+.proj-job {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px auto;
+}
+
+
+.new-project-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.new-project-container form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.new-project-container form button {
+  width: 100%;
+}
+
+.new-project-container form select {
+  font-size: 1.3rem;
+  font-weight: 200;
+}
+
+.new-project-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+.choose-client {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.choose-client form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.choose-client select {
+  font-size: 2rem;
+  margin: 10px;
+  font-weight: 200;
+  width: 50%;
+}
+
+.choose-client button {
+  font-size: 0.8rem;
+  padding: 10px;
+}
+
+.new-job-details {
+  margin: 0 auto;
+  width: 60%;
 }

@@ -1,22 +1,23 @@
-<h4>Client Name: <%= @client.name %></h4>
+<h1 class="section-title"> <%= @client.name %>'s Job Details</h1>
 
-<form action="/jobs" method="post">
-  <input type="hidden" name="client_id" value="<%= @client.id %>">
-  <input type="hidden" name="status" value="unfilled">
-  
-  <label for="">Project Name</label>
-  <select name="project_id">
-    <% @client.projects.each do |project| %>
-        <option value="<%= project.id %>"><%= project.name %></option>
-    <% end %>
-  </select>
-  <label for="">Worker Type</label>
-  <input type="text" name="worker_type">
-  <label for="">Start Date</label>
-  <input type="date" name="start_date">
-  <label for="">Start Time</label>
-  <input type="time" name="start_time">
-  
-  <button>Create Job</button>
-</form>
-
+<div class="new-job-details box">
+  <form action="/jobs" method="post">
+    <input type="hidden" name="client_id" value="<%= @client.id %>">
+    <input type="hidden" name="status" value="unfilled">
+    
+    <label for="">Project Name</label>
+    <select name="project_id">
+      <% @client.projects.each do |project| %>
+          <option value="<%= project.id %>"><%= project.name %></option>
+      <% end %>
+    </select>
+    <label for="">Worker Type</label>
+    <input type="text" name="worker_type">
+    <label for="">Start Date</label>
+    <input type="date" name="start_date">
+    <label for="">Start Time</label>
+    <input type="time" name="start_time">
+    
+    <button>Create Job</button>
+  </form>
+</div>

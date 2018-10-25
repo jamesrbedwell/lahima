@@ -1,10 +1,11 @@
-<h1>Add a Job</h1>
-<form action="/jobs/client">
-  <label for="">Client Name</label>
-  <select name="client_id">
-    <% current_user.clients.each do |client| %>
-      <option value="<%= client.id %>"><%= client.name %></option>
-    <% end %>
-  </select>  
-  <button>Select Client</button>
-</form>
+<h1 class="section-title">Add a Job</h1>
+<div class="choose-client box">
+  <form action="/jobs/client">
+    <select name="client_id">
+      <% current_user.clients.each do |client| %>
+        <option value="<%= client.id %>"><%= client.name %></option>
+      <% end %>
+    </select>  
+    <button>Select Client</button>
+  </form>
+</div>
