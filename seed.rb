@@ -21,7 +21,7 @@ require_relative 'models/project' #(singular)
     :country => Faker::Address.country,
     :post_code => Faker::Address.postcode,
     :transport => 'Public Transport',
-    :available => true
+    :available => true,
     :user_id => 1
   })
 end
