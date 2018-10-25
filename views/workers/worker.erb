@@ -1,6 +1,27 @@
-<h1><%= "#{@worker.first_name} #{@worker.last_name}" %></h1>
-<a href="/workers/<%= @worker.id %>/edit">Edit Worker Details</a>
-<form action="/workers/<%= @worker.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>Delete Worker</button>
-</form>
+<h1 class="section-title"><%= @worker.full_name %></h1>
+<div class="box worker-deets">
+  <div class="worker-info">
+    <h1><%= @worker.worker_type %></h1>
+    <h2><%= @worker.phone %></h2>
+    <h2><%= @worker.email %></h2>
+    <p><%= @worker.address1 %></p>
+    <p><%= @worker.city %></p>
+    <p><%= @worker.state %></p>
+    <p><%= @worker.country %></p>
+    <p><%= @worker.post_code %></p>
+    <% if @worker.available %>
+      <h2>Available</h2>
+    <% else %>
+      <h2>Not Available</h2>
+    <% end %>
+    <h2><%= @worker.transport %></h2>
+  </div>
+
+  <div class="wrk-btns">
+    <a href="/workers/<%= @worker.id %>/edit" class="button">Edit Worker Details</a>
+    <form action="/workers/<%= @worker.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete Worker</button>
+    </form>
+  </div>
+</div>

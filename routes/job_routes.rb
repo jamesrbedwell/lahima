@@ -4,8 +4,20 @@ get '/jobs/new' do
 end
 
 get '/jobs/client' do
+  redirect to '/' unless logged_in?
+  @worker_types = ['Labourer', 'Ticketed', 'Carpenter']
   @client = Client.find(params[:client_id])
   erb :'jobs/job_details'
+end
+
+get '/jobs/list' do 
+  redirect to '/' unless logged_in?
+  @all_jobs = Job.all
+  @unfilled = Job.unfilled
+  @filled = Job.filled
+  @working = Job.working
+  @finished = Job.finished
+  erb :'jobs/list_jobs'
 end
 
 post '/jobs' do
@@ -86,6 +98,8 @@ put '/jobs/:id/finished' do
 end
 
 get '/jobs/:id/:client_id' do
+  redirect to '/' unless logged_in?
+  @worker_types = ['Labourer', 'Ticketed', 'Carpenter']
   @job = Job.find(params[:id])
   @client = Client.find(params[:client_id])
 

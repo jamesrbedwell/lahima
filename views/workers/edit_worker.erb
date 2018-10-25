@@ -1,6 +1,6 @@
 <div class="edit-worker-details">
 <h1>Edit <%= @worker.full_name %>'s Details</h1>
-<form action="/workers/<%=@worker.id%>" method="post">
+<form action="/workers/<%=@worker.id%>" method="post" class="box">
   <input type="hidden" name="_method" value="put">
   <div>
     <label for="">First Name</label>

@@ -1,6 +1,24 @@
-<h1><%= @client.name %></h1>
-<a href="/clients/<%= @client.id %>/edit">Edit Client Details</a>
-<form action="/clients/<%= @client.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>Delete Client</button>
-</form>
+<h1 class="section-title"><%= @client.name %></h1>
+  <div class="client-details">
+    <div class="client-contact-details">
+      <h1 class="client-name"><%= @client.name %></h1>
+      <p><%= @client.address1 %></p>
+      <p><%= @client.city %></p>
+      <p><%= @client.state %></p>
+      <p><%= @client.post_code %></p>
+      <p><%= @client.country %></p>
+      <p>ABN: <%= @client.abn %></p>
+    </div>
+    <div class="client-rates">
+      <h2>RATES</h2>
+      <h3>Labour Rate: $<%= @client.labour_rate %></h3>
+      <h3>Ticketed Rate: $<%= @client.ticketed_rate %></h3>
+      <h3>Trade Rate: $<%= @client.trade_rate %></h3>
+    </div>
+  <a href="/clients/<%= @client.id %>/edit" class="button">Edit Client Details</a>
+  <form action="/clients/<%= @client.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete Client</button>
+  </form>
+  </div>
+</div>

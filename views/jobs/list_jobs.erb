@@ -1,0 +1,80 @@
+<h1 class="section-title">PENDING JOBS</h1>
+<div class="pending-jobs job-cont">
+  <div class="filled-jobs">
+    <h1 class="section-title small">Filled Jobs</h1>
+    <div class="filled-list list box">
+      <% if @filled %> 
+        <% @filled.each do |job |%>
+          <div class="list-job">
+            <h1 class="section-title"><%= job.project.client.name %></h1>
+            <h3><%= job.worker_type %></h3>
+            <p><%= job.start_date.strftime('%d/%m/%Y') %></p>
+            <p><%= job.status.capitalize %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p> No Current Jobs</p>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="unfilled-jobs">
+    <h1 class="section-title small">Unfilled Jobs</h1>
+    <div class="unfilled-list list box">
+      <% if @unfilled %> 
+        <% @unfilled.each do |job |%>
+          <div class="list-job">
+            <h1 class="section-title"><%= job.project.client.name %></h1>
+            <h3><%= job.worker_type %></h3>
+            <p><%= job.start_date.strftime('%d/%m/%Y') %></p>
+            <p><%= job.status.capitalize %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p> No Current Jobs</p>
+      <% end %>
+    
+    </div>  
+  
+  </div>
+</div>
+<h1 class="section-title">ACTIVE JOBS</h1>
+<div class="active-jobs job-cont">
+  <div class="working-jobs">
+    <h1 class="section-title small">Working Jobs</h1>
+    <div class="working-list list box">
+      <% if @working %> 
+        <% @working.each do |job |%>
+          <div class="list-job">
+            <h1 class="section-title"><%= job.project.client.name %></h1>
+            <h3><%= job.worker_type %></h3>
+            <p><%= job.start_date.strftime('%d/%m/%Y') %></p>
+            <p><%= job.status.capitalize %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p> No Current Jobs</p>
+      <% end %>
+    </div>
+  
+  </div>
+  <div class="finished-jobs">
+    <h1 class="section-title small">Finished Jobs</h1>
+    <div class="finished-list list box">
+      <% if @finished %> 
+        <% @finished.each do |job |%>
+          <div class="list-job">
+            <h1 class="section-title"><%= job.project.client.name %></h1>
+            <h3><%= job.worker_type %></h3>
+            <p><%= job.start_date.strftime('%d/%m/%Y') %></p>
+            <p><%= job.status.capitalize %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p> No Current Jobs</p>
+      <% end %>
+    </div>
+  
+  </div>
+
+</div>
