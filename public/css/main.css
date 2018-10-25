@@ -1,6 +1,9 @@
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #f1f1f9;
+  background-color: #e9e9e9;
   margin: 0;
   height: 100%;
 }
@@ -16,6 +19,7 @@ ul {
 
 .layout-body {
   display: flex;
+  min-height: 100vh;
 }
 
 .logo {
@@ -28,6 +32,10 @@ ul {
 
 .index-logo {
   font-size: 3rem;
+}
+
+.logo-layout {
+  margin: 20px 0;
 }
 
 .index {
@@ -95,76 +103,113 @@ ul {
 }
 
 .dash-top-nav {
-  background-color: #e6e6e6;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0.5%;
 }
 
 .user {
   background: mistyrose;
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 3%;
+  margin-right: 5px;
   text-align: center;
-}
-
-.dash-logo {
-  width: 15%;
+  font-size: 1.5rem;
+  color: darkgray;
+  border: 2px solid darkgray;
 }
 
 .logout-btn {
-  padding: 0.2rem 1rem;;
-  margin-top: 2%;
   cursor: pointer;
-  font-size: 1rem;
-  color: #324a5e;
-  background-color: #f1f1f9;
+  background: transparent;
   border: none;
-  box-shadow: 0px 2px 2px #d8d8d8;
-  transition: all ease-in-out 0.2s;
+  box-shadow: none;
 }
 
-.logout-btn:hover {
-  transition: all ease-in-out 0.2s;
-  background-color: #dbdbdb;
+.logout-btn img {
+  width: 20px;
 }
 
+.dash-side-nav {
+  width: 175px;
+  background-color: rgb(2, 6, 26);
+  display: flex;
+  flex-direction: column;
+  color: rgb(94, 94, 94);
+  text-align: right;
+  box-shadow: 1px 0 10px rgb(0, 1, 5);
+}
+
+.icon {
+  width: 24px;
+  margin-right: 5px;
+}
+
+.dash-side-nav p {
+  margin: 10px 5px 0 0;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+}
+
+.dash-side-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  font-size: 7pt;
+  letter-spacing: 0.2rem;
+  padding: 3px 0;
+  transition: all ease-in-out 0.3s;
+}
+
+.dash-side-nav a:hover {
+  transition: all ease-in-out 0.3s;
+  background-color: rgb(11, 16, 37);
+}
 .dash-main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+}
+
+button {
+  background-color: #335f92;
+  color: #fff;
+  text-align: center;
+  letter-spacing: .5px;
+  font-weight: 100;
+  text-transform: uppercase;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
+  border-radius: 2px;
+  border: none;
+  padding: 5px 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  transition: background-color .2s ease-out;
+  background-color: #3b72b1;
 }
 
 .dash-content {
   width: 100%;
 }
 
-.dash-side-nav {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 10%;
-  color: rgb(94, 94, 94);
-  text-align: right;
-}
-
-.dash-side-nav p {
-  margin: 0;
-  letter-spacing: 0.3rem;
+.section-title {
+  text-align: center;
+  color: rgb(69, 69, 69);
   font-weight: 600;
-}
-
-.dash-side-nav a {
-  color: white;
-  font-size: 8pt;
+  font-size: 1rem;
   letter-spacing: 0.2rem;
-  padding: 3px 0;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
 }
 
 .stats {
@@ -172,7 +217,7 @@ ul {
   display: flex;
   justify-content: space-evenly;
   color:#f1f1f9;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .stats h2, .stats h4 {
@@ -184,14 +229,15 @@ ul {
 }
 
 .stats h4 {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   font-weight: 300;
 }
 
 .stat {
-  width: 120px;
+  width: 240px;
   height: 120px;
-  border-radius: 50%;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,40 +245,78 @@ ul {
 }
 
 .working {
-  color: rgb(55, 68, 139);
-  border: 4px solid rgb(55, 68, 139);
+  color: rgb(55, 139, 55);
 }
 
 .unfilled {
   color: rgb(139, 55, 55);
-  border: 4px solid rgb(139, 55, 55);
 }
 
 .available {
-  color: rgb(55, 139, 55);
-  border: 4px solid rgb(55, 139, 55);
-}
-
-.unfilled-job-section, .filled-job-section, .working-job-section {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.unfilled-job-section h1, .filled-job-section h1, .working-job-section h1 {
-  font-size: 2rem;
-  margin-bottom: 3px;
-}
-
-.unfilled-job-section h1 {
-  color: rgb(139, 55, 55);
-}
-
-.filled-job-section h1 {
   color: rgb(55, 68, 139);
 }
 
-.working-job-section h1 {
-  color: rgb(55, 139, 55);
+.unassigned-workers {
+  width: 60%;
+  margin: 0 auto 20px;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
+}
+
+.unassigned-workers ul {
+  margin: 0;
+}
+
+.unassigned-workers h1 {
+  text-align: center;
+  padding-top: 10px;
+  margin: 0;
+  font-size: 1rem;
+  color: rgb(36, 36, 36);
+}
+.unassigned-workers p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgb(36, 36, 36);
+}
+
+.unassigned-worker {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.job-status-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.unfilled-job-section, .filled-job-section, .working-job-section {
+  width: 300px;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
+}
+
+.working-job-section, .filled-job-section > h2, h3, h4, p {
+  margin: 0;
+  text-align: left;
+}
+
+.unfilled-job-section h2 {
+  margin: 0;
+}
+
+.working-job-section h3, .unfille-job-section h3, .filled-job-section h3 {
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.working-job-section p, .unfilled-job-section p, .filled-job-section p {
+  font-size: 0.8rem;
+  font-weight: 100;
 }
 
 .unfilled-job, .filled-job, .working-job {
@@ -241,30 +325,50 @@ ul {
   justify-content: space-between;
   padding: 0 2rem;
   color: rgb(63, 63, 63);
-  text-transform: uppercase;
   font-weight: 600;
+  padding: 5px 10px;
 }
 
 .unfilled-job {
   background-color: rgba(139, 55, 55, 0.2);
+  border: 1px solid rgba(139, 55, 55, 0.1);
 }
 
 .filled-job {
   background-color: rgba(55, 68, 139, 0.2);
+  border-bottom: 1px solid rgba(55, 68, 139, 0.1)
 }
 
 .working-job {
   background-color: rgba(55, 139, 55, 0.2);
+  border: 1px solid rgba(55, 139, 55, 0.1);
 }
 
-.filled-job div {
+.fj-btns, .ufj-btns {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.ufj-btns form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fj-btns button, .ufj-btns button, .tfj-btns select {
+  margin: 3px 0;
+}
+
+.ufj-btns form select {
+  font-size: 1rem;
+  font-weight: 200;
 }
 
 .all-workers-list {
   display: flex;
   justify-content: space-around;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   margin-top: 10px;
 }
@@ -272,18 +376,23 @@ ul {
 .worker-types-list {
   display: flex;
   justify-content: space-around;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 50px;
 }
 
+.list-container {
+  width: 300px;
+}
+
 .list-workers {
-  background: rgb(206, 206, 206);
-  box-shadow: 0 5px 10px rgb(129, 129, 129);
-  width: 250px;
-  height: 350px;
+  width: 300px;
+  height: 200px;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
   overflow-y: scroll;
   margin: 0 auto;
+  padding: 0 10px 10px 10px;
 }
 
 .list-workers a {
@@ -299,10 +408,6 @@ ul {
   text-transform: uppercase;
 }
 
-.worker-list-item {
-  margin: 5px 0;
-  border-bottom: 1px solid rgb(151, 150, 150);
-}
 
 .worker-list-item h3, .worker-list-item h4 {
   margin: 0;
@@ -310,15 +415,34 @@ ul {
 
 .worker-list-item h3 {
   font-size: 1rem;
+  font-weight: 100;
 }
 
 .worker-list-item h4 {
   font-size: 0.8rem;
+  font-weight: 100;
 }
 
 .edit-worker-details {
   width: 80%;
   margin: 0 auto;
+}
+
+.worker-list-item {
+  margin: 10px 0;
+  border-bottom: 1px solid rgb(124, 124, 124);
+}
+
+.a-lab {
+  background-color: rgba(70, 255, 14, 0.2);
+}
+
+.a-tic {
+  background-color: rgba(14, 58, 255, 0.2);
+}
+
+.a-car {
+  background-color: rgba(187, 14, 255, 0.2);
 }
 
 .edit-worker-details form {
@@ -376,4 +500,66 @@ ul {
 
 .hidden-text {
   display: none;
+}
+
+.client-detail-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.client-container {
+  margin-bottom: 100px;
+}
+
+.client-name {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.client-rates h2 {
+  margin: 0;
+}
+
+.client-details {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
+  margin-bottom: 20px;
+}
+
+.client-proj-title {
+  font-size: 0.6rem;
+  margin-bottom: 0;
+}
+.client-job-title {
+  font-size: 0.6rem;
+  margin-bottom: 0;
+}
+
+.proj-name {
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.proj-name h1 {
+  margin: 0;
+}
+
+.proj-name h2 {
+  margin: 0;
+  font-weight: 100;
+}
+
+.proj-job-details {
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 3px 6px rgb(161, 161, 161);
+  margin-bottom: 20px;
 }

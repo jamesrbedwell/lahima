@@ -1,0 +1,51 @@
+<h1 class="section-title">CURRENT CLIENTS</h1>
+<div class="client-detail-container">
+  <% @clients.each do |client|%>
+    <div class="client-container">
+      <div class="client-details">
+        <div class="client-contact-details">
+          <h1 class="client-name"><%= client.name %></h1>
+          <p><%= client.address1 %></p>
+          <p><%= client.city %></p>
+          <p><%= client.state %></p>
+          <p><%= client.post_code %></p>
+          <p><%= client.country %></p>
+          <p>ABN: <%= client.abn %></p>
+        </div>
+        <div class="client-rates">
+          <h2>RATES</h2>
+          <h3>Labour Rate: $<%= client.labour_rate %></h3>
+          <h3>Ticketed Rate: $<%= client.ticketed_rate %></h3>
+          <h3>Trade Rate: $<%= client.trade_rate %></h3>
+        </div>
+      </div>
+      <div class="client-projects">
+        <% if client.projects %>
+          <% client.projects.each do |project|%>
+            <h1 class="section-title client-proj-title">projects</h1>
+            <div class="proj-name">
+              <h1><%= project.name %></h1>
+              <h2><%= "#{project.client_contact.full_name} - #{project.client_contact.phone}" %></h2>
+            </div>
+            <div class="project-jobs">
+              <h1 class="section-title client-job-title">jobs on project</h1>
+              <% if project.jobs %>
+                <% project.jobs.each do |job |%>
+                  <div class="proj-job-details">
+                    <p><%= job.worker_type %></p>
+                    <p><%= job.start_date %></p>
+                    <p><%= job.status.capitalize %></p>
+                  </div>
+                <% end %>
+              <% else %>
+                <h1>No current jobs</h1>
+              <% end %>
+            </div>
+          <% end%>
+        <% else %>
+          <h1>No projects</h1>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

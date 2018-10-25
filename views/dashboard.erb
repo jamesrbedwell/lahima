@@ -7,6 +7,7 @@
 </div>
 
 <main class="dashboard">
+  <h1 class="section-title">CURRENT STATS</h1>
   <section class="stats">
     <div class="stat working">
       <h2><%= Job.working.count %></h2>
@@ -21,14 +22,14 @@
       <h4>available workers</h4>
     </div>
   </section>
-
+  <h1 class="section-title">NOTIFICATIONS</h1>
   <section class="unassigned-workers">
-    <h1>There are <%= @unassigned.count %> new workers </h1>
+    <h1>Hey, there is <%= @unassigned.count %> new worker(s). </h1>
     <% if @unassigned %>
     <ul>
       <% @unassigned.each do | worker |%>
-      <li class="unassigned-workers">
-        <p><%= "#{worker.full_name} | #{worker.worker_type} | #{worker.available? ? 'Available' : 'Not Available'}" %></p>
+      <li class="unassigned-worker">
+        <p><%= "#{worker.full_name}, a #{worker.worker_type} and is #{worker.available? ? 'available' : 'ot Available'} to work" %></p>
         <form action="/workers/claim" method="post">
           <input type="hidden" name="worker_id" value="<%= worker.id %>">
           <button>Claim Worker</button>
@@ -39,95 +40,112 @@
   <% end %>
   </section>
 
-  <section class="unfilled-job-section">
-  <h1>UNFILLED JOBS</h1>
-  <% if @unfilled %>
-    <ul>
-      <% @unfilled.each do | job |%>
-      <li class="unfilled-job">
-        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.start_time.strftime("%H:%M")}" %></p>
+  <div class="job-status-container">
+    <div>
+      <h1 class="section-title">UNFILLED JOBS</h1>
+      <section class="unfilled-job-section">
+        <% if @unfilled %>
+          <% @unfilled.each do | job |%>
+          <div class="unfilled-job">
+            <div>
+              <h2><%= job.project.client.name %></h2>
+              <h3><%= job.project.name %></h3>
+              <p><%= job.worker_type %></p>
+              <p><%= job.start_date.strftime("%d/%m/%Y") %></p>
+              <p><%= job.start_time.strftime("%H:%M") %></p>
+            </div>
+            <div class="ufj-btns">
+              <button class="job-text-btn">
+                Job Text
+                <div class="hidden-text">
+                  <p><%="For #{job.start_date.strftime('%A %d/%m/%Y')}:"%></p>
+                  <p><%="#{job.project.client.name}"%></p>
+                  <p><%="Address: #{job.project.address1}, #{job.project.city}"%></p>
+                  <p><%="Contact: #{job.project.client_contact.full_name}: #{job.project.client_contact.phone}"%></p>
+                  <p><%="Start Time: #{job.start_time.strftime("%H:%M %p")} (Please arrive 15mins beforehand)"%></p>
+                  <p>Full PPE and White Card</p>
+                  <p>Can you confirm this is ok?</p>
+                </div>
+              </button>
 
-        </div>
-        <button class="job-text-btn">
-          Job Text
-          <div class="hidden-text">
-            <p><%="For #{job.start_date.strftime('%A %d/%m/%Y')}:"%></p>
-            <p><%="#{job.project.client.name}"%></p>
-            <p><%="Address: #{job.project.address1}, #{job.project.city}"%></p>
-            <p><%="Contact: #{job.project.client_contact.full_name}: #{job.project.client_contact.phone}"%></p>
-            <p><%="Start Time: #{job.start_time.strftime("%H:%M %p")} (Please arrive 15mins beforehand)"%></p>
-            <p>Full PPE and White Card</p>
-            <p>Can you confirm this is ok?</p>
+              <form action="/jobs/<%= job.id %>/add_worker" method="post">
+                <input type="hidden" name="_method" value="put">
+                  <select name="worker_id">
+                    <% if job.worker_type == "Labourer" %>
+                      <% @avail_labourers.each do |worker| %>
+                        <option value="<%= worker.id %>"><%= worker.full_name %></option>
+                      <% end %>
+                    <% elsif job.worker_type == "Ticketed" %>
+                      <% @avail_ticketed.each do |worker| %>
+                        <option value="<%= worker.id %>"><%= worker.full_name %></option>
+                      <% end %>
+                    <% elsif job.worker_type == "Carpenter" %>
+                      <% @avail_carpenters.each do |worker| %>
+                        <option value="<%= worker.id %>"><%= worker.full_name %></option>
+                      <% end %>
+                    <% end %>
+                  </select>
+                  <button>Assign Worker</button>
+              </form>
+            </div>
           </div>
-        </button>
-
-        <form action="/jobs/<%= job.id %>/add_worker" method="post">
-        <input type="hidden" name="_method" value="put">
-          <select name="worker_id">
-            <% if job.worker_type == "Labourer" %>
-              <% @avail_labourers.each do |worker| %>
-                <option value="<%= worker.id %>"><%= worker.full_name %></option>
-              <% end %>
-            <% elsif job.worker_type == "Ticketed" %>
-              <% @avail_ticketed.each do |worker| %>
-                <option value="<%= worker.id %>"><%= worker.full_name %></option>
-              <% end %>
-            <% elsif job.worker_type == "Carpenter" %>
-              <% @avail_carpenters.each do |worker| %>
-                <option value="<%= worker.id %>"><%= worker.full_name %></option>
-              <% end %>
           <% end %>
-          </select>
-          
-          <button>Assign Worker</button>
-        </form>
-      </li>
-      <% end %>
-    </ul>
-  <% end %>
-  </section>
-
-
-  <section class="filled-job-section">
-  <h1>FILLED JOBS</h1>
-  <% if @filled %>
-    <ul>
-      <% @filled.each do | job |%>
-      <li class="filled-job">
-        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.start_time.strftime("%H:%M")} | #{job.worker.full_name}" %></p>
-        <div>
-          <form action="/jobs/<%= job.id %>/remove_worker" method="post">
-            <input type="hidden" name="_method" value="put">          
-            <button>Remove Worker</button>
-          </form>
-          <form action="/jobs/<%= job.id %>/working" method="post">
-            <input type="hidden" name="_method" value="put">          
-            <button>Working</button>
-          </form>
-          <form action="/jobs/<%= job.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">          
-            <button>Cancelled</button>
-          </form>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-  <% end %>
-</section>
-
-<section class="working-job-section">
-  <h1>WORKING JOBS</h1>
-  <% if @working_jobs %>
-    <ul>
-      <% @working_jobs.each do | job |%>
-      <li class="working-job">
-        <p><%= "#{job.project.client.name} | #{job.project.name} | #{job.worker_type} | #{job.start_date.strftime("%d/%m/%Y")} | #{job.worker.full_name}" %></p>
-        <form action="/jobs/<%= job.id %>/finished" method="post">
-          <input type="hidden" name="_method" value="put">          
-          <button>Finished</button>
-        </form>
-      </li>
-      <% end %>
-    </ul>
-  <% end %>
-</section>
+        <% end %>
+      </section>
+    </div>
+    <div>
+      <h1 class="section-title">FILLED JOBS</h1>
+      <section class="filled-job-section">
+        <% if @filled %>
+            <% @filled.each do | job |%>
+            <div class="filled-job">
+              <div class="fj-details">
+                <h3><%= job.project.client.name %></h3> 
+                <h4><%= job.project.name %></h4>
+                <p><%= job.worker_type %></p>
+                <p><%= job.start_date.strftime("%d/%m/%Y") %></p>
+                <p><%= job.start_time.strftime("%H:%M") %></p>
+                <h4><%= job.worker.full_name %></h4>
+              </div>
+              <div class="fj-btns">
+                <form action="/jobs/<%= job.id %>/remove_worker" method="post">
+                  <input type="hidden" name="_method" value="put">          
+                  <button>Remove Worker</button>
+                </form>
+                <form action="/jobs/<%= job.id %>/working" method="post">
+                  <input type="hidden" name="_method" value="put">          
+                  <button>Working</button>
+                </form>
+                <form action="/jobs/<%= job.id %>" method="post">
+                  <input type="hidden" name="_method" value="delete">          
+                  <button>Cancelled</button>
+                </form>
+              </div> 
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+    <div>
+      <h1 class="section-title">WORKING JOBS</h1>
+      <section class="working-job-section">
+        <% if @working_jobs %>
+            <% @working_jobs.each do | job |%>
+            <div class="working-job">
+              <div>
+                <h3><%= job.project.client.name %></h3>
+                <h4><%= job.project.name %></h4>
+                <p><%= job.worker_type %></p>
+                <p><%= job.start_date.strftime("%d/%m/%Y") %></p>
+                <p><%= job.worker.full_name %></p>
+              </div>
+              <form action="/jobs/<%= job.id %>/finished" method="post">
+                <input type="hidden" name="_method" value="put">          
+                <button>Finished</button>
+              </form>
+            </div>
+            <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>

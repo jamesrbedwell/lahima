@@ -3,6 +3,12 @@ get '/projects/new' do
   erb :'projects/new_project'
 end
 
+get '/projects/list' do
+  redirect to '/' unless logged_in?
+
+  @projects = Project.all
+  erb :'projects/list_projects'
+end
 
 post '/projects' do
   project = Project.new

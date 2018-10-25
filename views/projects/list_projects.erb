@@ -1,0 +1,21 @@
+<% @projects.each do |project| %>
+
+  <div class="project-details">
+    <h1><%= project.name %></h1>
+    <h2><%= project.client.name %></h2>
+    <h3><%= project.client_contact.full_name %></h3>
+    <h3><%= project.client_contact.phone %></h3>
+    <div class="project-jobs">
+      <% if project.jobs %> 
+        <% project.jobs.each do |job |%>
+          <p><%= job.worker_type %></p>
+          <p><%= job.start_date %></p>
+          <p><%= job.status.capitalize %></p>
+        <% end %>
+      <% else %>
+        <p> No Current Jobs</p>
+      <% end %>
+    </div>
+  </div>
+
+<% end%>

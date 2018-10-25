@@ -3,6 +3,12 @@ get '/clients/new' do
   erb :'clients/new_client'
 end
 
+get '/clients/list' do
+  redirect to '/' unless logged_in?
+  @clients = Client.all
+  erb :'clients/list_clients'
+end
+
 post '/clients' do
   client = Client.new
   client.name = params[:name]
