@@ -145,6 +145,12 @@ ul {
   width: 80%;
 }
 
+.show {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .logout-btn {
   cursor: pointer;
   background: transparent;
