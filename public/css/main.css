@@ -601,7 +601,8 @@ button:hover, .button:hover {
   color: rgb(69,69,69);
 }
 
-button .add-contact {
+.add-contact-btn {
+  width: 10%;
   margin: 0 auto;
 }
 

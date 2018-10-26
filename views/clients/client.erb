@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<% if @client.client_contacts > 0 %>
+<% if @client.client_contacts %>
   <% @client.client_contacts.each do |contact| %>
     <a href="/client_contacts/<%= contact.id %>">
       <div class="cli-cont box">
@@ -34,6 +34,7 @@
       </div>
     </a>
   <% end %>
-<% else %>
-  <button class="add-contact">Add Contact</button>
 <% end %>
+<div class="add-contact-btn">
+  <button class="add-contact">Add Contact</button>
+</div>  
