@@ -12,7 +12,7 @@
   <label for="">Client Name</label>
   <select name="client_id">
     <% current_user.clients.each do |client| %>
-      <% if client.id == params[:client_id] %>
+      <% if client.id == params[:client_id].to_i %>
         <option value="<%= client.id %>" selected><%= client.name %></option>
       <% else %>
         <option value="<%= client.id %>"><%= client.name %></option>
