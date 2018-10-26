@@ -33,4 +33,15 @@ If I was to complete the task again I would make the views more concise, I feel 
 
 Using a CSS framework would have made the styling process a lot easier. Or planning out a style guide in more detail may have been better use of time.
 
+# Future Steps
+Refine the layout, clearer sections. Colour buttons. Provide more data.
+
+Functionality to create new jobs, off current jobs with the same details other than.
+
+Validation
+
+Record of workers who have been to jobs previously, and maybe sort suggestions based off this.
+
+Worker Ratings. Higher Rated Workers are suggested first.
+
 
