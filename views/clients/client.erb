@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<% if @client.client_contacts %>
+<% if @client.client_contacts > 0 %>
   <% @client.client_contacts.each do |contact| %>
     <a href="/client_contacts/<%= contact.id %>">
       <div class="cli-cont box">
