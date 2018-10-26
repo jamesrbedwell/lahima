@@ -1,13 +1,16 @@
-<h1><%= @job.project.client.name %></h1>
-<h2><%= @job.project.name %></h2>
-<h2><%= @job.worker_type %></h2>
-<h2><%= @job.start_date.strftime("%d/%m/%Y") %></h2>
-<h2><%= @job.start_time.strftime("%H:%M") %></h2>
-<h2><%= @job.status %></h2>
-<h3><%= @job.worker ? @job.worker.full_name : "No Worker Assigned" %></h3>
-
-<a href="/jobs/<%= @job.id %>/edit">Edit job Details</a>
-<form action="/jobs/<%= @job.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>Delete Job</button>
+<h1 class="section-title"><%= @job.project.client.name %></h1>
+<div class="box job-show">
+  <h2><%= @job.project.name %></h2>
+  <h2><%= @job.worker_type %></h2>
+  <h2><%= @job.start_date.strftime("%d/%m/%Y") %></h2>
+  <h2><%= @job.start_time.strftime("%H:%M") %></h2>
+  <h2><%= @job.status %></h2>
+  <h3><%= @job.worker ? @job.worker.full_name : "No Worker Assigned" %></h3>
+  <div class="job-btns">
+    <a class="button" href="/jobs/<%= @job.id %>/edit">Edit job Details</a>
+    <form action="/jobs/<%= @job.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete Job</button>
+  </div>
+</div>
 </form>

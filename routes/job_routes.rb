@@ -28,6 +28,7 @@ post '/jobs' do
   job.start_time = params[:start_time]
   job.status = params[:status]
   job.save
+  binding.pry
 
   redirect to("/jobs/#{job.id}")
 end

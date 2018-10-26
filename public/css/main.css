@@ -606,6 +606,18 @@ button:hover, .button:hover {
   margin: 0 auto;
 }
 
+.job-show {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.job-btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0;
+  padding-bottom: 10px;
+}
+
 .new-client-container {
   width: 60%;
   margin: 0 auto;

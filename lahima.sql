@@ -69,8 +69,8 @@ CREATE TABLE jobs (
   id SERIAL PRIMARY KEY,
   project_id INTEGER,
   worker_type VARCHAR(200),
-  start_date TIMESTAMP,
-  start_time TIMESTAMP,
+  start_date DATE,
+  start_time TIME,
   status VARCHAR(100),
   worker_id INTEGER
 );
