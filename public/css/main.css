@@ -130,6 +130,21 @@ ul {
   border: 2px solid darkgray;
 }
 
+.user-area {
+  width: 40%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-user-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
 .logout-btn {
   cursor: pointer;
   background: transparent;
@@ -526,6 +541,10 @@ button:hover, .button:hover {
   margin-bottom: 100px;
 }
 
+.client-container a {
+  color: rgb(69,69,69)
+}
+
 .client-name {
   font-size: 3rem;
   margin: 0;
@@ -537,10 +556,25 @@ button:hover, .button:hover {
 
 .client-details {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   background-color: rgb(248, 248, 248);
   box-shadow: 0 3px 6px rgb(161, 161, 161);
   margin-bottom: 20px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.cl-con-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.client-det-btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
 }
 
 .client-proj-title {
@@ -550,6 +584,19 @@ button:hover, .button:hover {
 .client-job-title {
   font-size: 0.6rem;
   margin-bottom: 0;
+}
+
+.cli-cont {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.cli-cont a {
+  color: rgb(69,69,69);
+}
+
+button .add-contact {
+  margin: 0 auto;
 }
 
 .new-client-container {
@@ -636,6 +683,10 @@ button:hover, .button:hover {
   color: rgb(128, 127, 127);
   font-weight: 200;
   margin-bottom: 0;
+}
+
+.proj-link {
+  color: rgb(58, 58, 58);
 }
 
 .project-jobs h2 {
@@ -763,6 +814,7 @@ button:hover, .button:hover {
 .client-edit-details form {
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
 .client-edit-details form input {
@@ -774,4 +826,30 @@ button:hover, .button:hover {
   margin: 0 auto;
   padding: 20px
 }
+
+.edit-project {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.edit-project form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.edit-project form button {
+  margin: 10px;
+}
+
+.add-client-contact {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
 

@@ -54,9 +54,11 @@
     </nav>
   <main class="dash-main">
     <nav class="dash-top-nav">
-      <div class="user">
-        <h3><%= "#{current_user.first_name[0]}#{current_user.last_name[0]}" %></h3>
-      </div>
+      <a href="/users/<%= current_user.id %>">
+        <div class="user">
+          <h3><%= "#{current_user.first_name[0]}#{current_user.last_name[0]}" %></h3>
+        </div>
+      </a>
       <form action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
         <button class="logout-btn"><img src="/images/icons/logout.svg" alt=""></button>

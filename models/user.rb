@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   has_many :worker_jobs, through: :workers
   has_many :client_jobs, through: :projects
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

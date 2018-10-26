@@ -1,5 +1,6 @@
 <h1 class="section-title">CURRENT PROJECTS</h1>
 <% @projects.each do |project| %>
+  <a class="proj-link" href="/projects/<%= project.id %>/edit">
   <div class="project-container">
     <div class="project-details box">
       <h1><%= project.name %></h1>
@@ -23,4 +24,5 @@
       <% end %>
     </div>
   </div>
+  </a>
 <% end%>
