@@ -17,6 +17,13 @@ http://lahima.herokuapp.com
 * ACTIVERECORD - ORM
 * SINATRA - FRAMEWORK
 
+# Planning
+This is something that I really need to work on, especially when it comes to layout ideas. Possibly using actually wireframes rather than my dodgey sketches. 
+https://github.com/jamesrbedwell/lahima/tree/master/wireframes
+
+The entity relationship seems to be accurate. However without the required validation, it doesn't make too much sense on a client having multiple contacts.
+https://github.com/jamesrbedwell/lahima/blob/master/Lahima%20ERL.xml
+
 # Review
 Overall I'm pretty happy with the way that the app works. It doesn't have the full functionality that I was hoping to achieve, however that may have been out of reach in the short period of time we had to bring the app to production.
 
@@ -25,3 +32,5 @@ It does lack validation, which would be one of the next steps I will look to imp
 If I was to complete the task again I would make the views more concise, I feel like a lot of infomation is currently repeated, there is circa 30 in total.
 
 Using a CSS framework would have made the styling process a lot easier. Or planning out a style guide in more detail may have been better use of time.
+
+
